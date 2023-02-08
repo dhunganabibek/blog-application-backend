@@ -1,0 +1,14 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    password: RisinG123@
+    url: jdbc:mysql://localhost:3306/blog-application-backend
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
