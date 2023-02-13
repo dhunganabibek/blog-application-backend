@@ -12,3 +12,8 @@ Technologies Used:
 6. Swagger
 7. Spring Security
 ```
+
+## Exception Handling and Model Mapper implementation
+
+Use of Model Mapper for conversion from Entity to DTO.
+Use of Global Exception Handler with @RestControllerAdvice and @ExceptionHandler
