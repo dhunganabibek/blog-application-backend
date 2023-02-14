@@ -1,11 +1,10 @@
 package com.blogapp.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,14 +16,21 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
-	@Column(nullable = false, length = 100)
+	
+	@NotNull
+	@NotEmpty
+	@Size(min =4, message = "Name must conatain at least 3 charcaters")
 	private String name;
+	
+	@Email(message = "Email Address is not valid")
 	private String email;
+	
+	@NotNull
+	@NotEmpty
 	private String password;
+	
+	@NotEmpty
 	private String about;
 
 }

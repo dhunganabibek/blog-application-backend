@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.blogapp.dtos.UserDTO;
-import com.blogapp.respositories.UserRepo;
 import com.blogapp.services.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,7 +29,7 @@ public class UserController {
 	
 	//POST: create User
 	@PostMapping("/")
-	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO){
+	public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO){
 		UserDTO createUserDTO = userService.createUser(userDTO);
 		return new ResponseEntity<>(createUserDTO, HttpStatus.CREATED);
 		
@@ -38,7 +38,7 @@ public class UserController {
 	
 	//PUT: Update user
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO, @PathVariable("userId") Integer userId){
+	public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UserDTO userDTO, @PathVariable("userId") Integer userId){
 		UserDTO updatedUser = userService.updateUser(userDTO, userId);
 		return ResponseEntity.ok(updatedUser);
 		
